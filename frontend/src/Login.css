@@ -1,0 +1,1005 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+
+  background-color: #154265;
+
+  background-image: radial-gradient(
+    farthest-side ellipse at 10% 0,
+    #154265 20%,
+    #7392c2
+  );
+
+  background-attachment: fixed;
+
+  color: #555;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.background-warpper {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+
+  padding: 0 15px;
+}
+
+
+/* =========================================================
+   LOGIN CONTAINER
+========================================================= */
+
+.single-widget-container {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  padding-top: 90px;
+  padding-bottom: 40px;
+
+  flex: 1;
+}
+
+
+/* =========================================================
+   LOGIN WIDGET
+========================================================= */
+
+.login-widget {
+  width: 350px;
+  max-width: 100%;
+
+  margin: 0 auto;
+
+  padding: 12px 17px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  z-index: 10;
+
+  border-radius: 3px;
+
+  color: #f8f8f8;
+
+  background: rgba(51, 51, 51, 0.4);
+}
+
+
+/* =========================================================
+   BACKGROUND LOGO
+========================================================= */
+
+.login-logo {
+  position: absolute;
+
+  top: 43%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+.login-logo img {
+  width: 230px;
+  max-width: 80%;
+
+  height: auto;
+
+  opacity: 0.9;
+
+  user-select: none;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.login-widget > header {
+  position: relative;
+
+  z-index: 2;
+}
+
+.login-widget > header h3 {
+  margin: 15px 0 25px;
+
+  line-height: 20px;
+
+  font-weight: 600;
+
+  color: #fff;
+
+  font-size: 22px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+.login-widget > .body {
+  width: 100%;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+.login-widget form {
+  width: 100%;
+
+  margin: 0;
+}
+
+.login-widget fieldset {
+  margin: 0;
+
+  padding: 0;
+
+  border: 0;
+}
+
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.login-widget .form-group {
+  width: 100%;
+
+  margin-bottom: 20px;
+}
+
+.login-widget .form-group label {
+  display: inline-block;
+
+  max-width: 100%;
+
+  margin-bottom: 5px;
+
+  color: #f8f8f8;
+
+  font-family: "Open Sans", sans-serif;
+
+  font-size: 13px;
+
+  line-height: 1.428571429;
+
+  font-weight: 300;
+
+  text-align: start;
+}
+
+
+/* =========================================================
+   INPUT GROUP
+========================================================= */
+
+.login-widget .input-group {
+  width: 100%;
+
+  display: flex;
+
+  position: relative;
+}
+
+.login-widget .input-group-addon {
+  width: 45px;
+  min-width: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 5px 10px;
+
+  color: #d2d2d2;
+
+  font-size: 13px;
+
+  text-align: center;
+
+  background-color: rgba(51, 51, 51, 0.3);
+
+  border: 1px solid transparent;
+
+  border-radius: 4px 0 0 4px;
+}
+
+.login-widget .input-group-addon svg {
+  font-size: 14px;
+
+  color: #d2d2d2;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.login-widget .input-group .form-control {
+  flex: 1;
+
+  width: 1%;
+  min-width: 0;
+
+  height: 44px;
+
+  padding: 10px 16px;
+
+  color: #f8f8f8;
+
+  background-color: rgba(51, 51, 51, 0.4);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-left: 0;
+
+  border-radius: 0 4px 4px 0;
+
+  outline: none;
+
+  font-family: "Open Sans", sans-serif;
+
+  font-size: 13px;
+
+  line-height: 1.42857143;
+
+  box-shadow: none;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.login-widget .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+
+  opacity: 1;
+}
+
+.login-widget .input-group:focus-within .input-group-addon {
+  color: #fff;
+}
+
+.login-widget .input-group:focus-within .input-group-addon svg {
+  color: #fff;
+}
+
+.login-widget .input-group:focus-within .form-control {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* =========================================================
+   PASSWORD GROUP
+========================================================= */
+
+.login-widget .input-group-lg {
+  height: 44px;
+
+  margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.login-error {
+  width: 100%;
+
+  margin: 5px 0 15px;
+
+  padding: 9px 12px;
+
+  color: #b94a48;
+
+  background-color: #f2dede;
+
+  border: 1px solid #ebccd1;
+
+  border-radius: 4px;
+
+  font-size: 13px;
+
+  line-height: 1.4;
+
+  overflow-wrap: break-word;
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+========================================================= */
+
+.login-widget .form-actions {
+  margin: -19px -17px;
+
+  padding: 20px 15px 0;
+
+  background-color: rgba(51, 51, 51, 0.3);
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+========================================================= */
+
+.login-widget .form-actions .btn-success {
+  width: 100%;
+
+  min-height: 44px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  position: relative;
+
+  margin-bottom: 0;
+
+  padding: 10px 16px;
+
+  border: 1px solid #32c067;
+
+  border-radius: 6px;
+
+  background-color: #3ecd74;
+
+  color: #fff;
+
+  font-size: 16px;
+
+  font-weight: 300;
+
+  line-height: 1.33;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  user-select: none;
+
+  box-shadow: none;
+
+  text-shadow: none;
+
+  transition: 0.2s ease;
+}
+
+.login-widget .form-actions .btn-success:hover {
+  background-color: #2cac5c;
+
+  border-color: #258f4d;
+}
+
+.login-widget .form-actions .btn-success:active {
+  transform: translateY(1px);
+
+  background-color: #398439;
+}
+
+.login-widget .form-actions .btn-success:focus {
+  outline: none;
+
+  border-color: #398439;
+
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.2),
+    0 0 5px rgba(92, 184, 92, 0.45);
+}
+
+.login-widget .form-actions .btn-success:disabled {
+  cursor: wait;
+
+  opacity: 0.75;
+}
+
+.login-widget .form-actions .btn-success small {
+  position: relative;
+
+  font-size: 92%;
+
+  font-weight: 300;
+
+  line-height: 1.33;
+}
+
+
+/* =========================================================
+   BUTTON CIRCLE
+========================================================= */
+
+.login-widget .form-actions .small-circle {
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+
+  left: 50%;
+
+  transform: translateX(-38px);
+
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.2);
+
+  color: #fff;
+
+  font-size: 13px;
+
+  pointer-events: none;
+}
+
+.login-widget .form-actions .btn-success:hover .small-circle {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+
+/* =========================================================
+   FORGOT PASSWORD
+========================================================= */
+
+.login-widget .form-actions .forgot {
+  display: block;
+
+  padding: 15px 0;
+
+  color: #d2d2d2;
+
+  font-size: 12px;
+
+  line-height: 18px;
+
+  text-align: center;
+
+  transition: color 0.15s ease;
+}
+
+.login-widget .form-actions .forgot:hover {
+  color: #fff;
+
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer-container {
+  width: calc(100% - 80px);
+
+  max-width: 1200px;
+
+  margin: 0 auto 10px;
+
+  padding: 0;
+
+  background: rgba(51, 51, 51, 0.4);
+
+  color: #f8f8f8;
+}
+
+.footer-row {
+  width: 100%;
+
+  display: flex;
+
+  align-items: stretch;
+
+  justify-content: space-between;
+
+  gap: 5px;
+
+  padding: 0 20px;
+}
+
+.footer-left {
+  width: 65%;
+}
+
+.footer-right {
+  width: 35%;
+
+  text-align: right;
+}
+
+.footer-row .small-box {
+  width: 100%;
+
+  height: 100%;
+
+  margin: 0;
+
+  padding: 6px 10px;
+
+  color: #f8f8f8;
+
+  font-family: "Open Sans", sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 300;
+
+  line-height: 18px;
+}
+
+.footer-row .small-box a {
+  color: #9dd0ff;
+
+  text-decoration: none;
+}
+
+.footer-row .small-box a:hover {
+  color: #fff;
+
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.loader-wrap {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.15);
+
+  pointer-events: none;
+}
+
+.loader-wrap i {
+  color: #fff;
+
+  font-size: 30px;
+
+  font-style: normal;
+
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .background-warpper {
+    padding: 0 10px;
+  }
+
+  .single-widget-container {
+    padding-top: 35px;
+
+    padding-bottom: 25px;
+  }
+
+.login-widget {
+    width: 350px;
+    height: 355px;
+    max-width: 100%;
+    padding: 12px 15px;
+    margin-top: 20%;
+}
+
+  .login-widget > header h3 {
+    font-size: 20px;
+
+    margin: 12px 0 22px;
+  }
+
+  .login-logo {
+    top: 42%;
+  }
+
+  .login-logo img {
+    width: 210px;
+
+    max-width: 75%;
+  }
+
+  .login-widget .form-actions {
+    margin: -17px -15px;
+
+    padding: 18px 13px 0;
+  }
+
+  .footer-container {
+    width: 100%;
+
+    margin: 0 auto 10px;
+  }
+
+  .footer-row {
+    display: block;
+
+    padding: 0 10px;
+  }
+
+  .footer-left,
+  .footer-right {
+    width: 100%;
+
+    text-align: center;
+  }
+
+  .footer-right {
+    margin-top: 3px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .background-warpper {
+    padding: 0 8px;
+  }
+
+  .single-widget-container {
+    padding-top: 20px;
+
+    padding-bottom: 20px;
+  }
+.login-widget {
+    width: 100%;
+    max-width: 340px;
+    height: 325px;
+    padding: 10px 13px;
+    margin-top: 40px;
+}
+
+  .login-widget > header h3 {
+    font-size: 18px;
+
+    line-height: 22px;
+
+    margin: 10px 0 20px;
+  }
+
+  .login-logo {
+    top: 42%;
+  }
+
+.login-logo img {
+    width: 100px;
+    max-width: 70%;
+}
+
+  .login-widget .form-group {
+    margin-bottom: 17px;
+  }
+
+  .login-widget .form-group label {
+    font-size: 12px;
+  }
+
+  .login-widget .input-group-addon {
+    width: 42px;
+
+    min-width: 42px;
+
+    padding: 5px 8px;
+  }
+
+  .login-widget .input-group .form-control {
+    height: 42px;
+
+    padding: 9px 12px;
+
+    font-size: 12px;
+  }
+
+  .login-widget .input-group-lg {
+    height: 42px;
+
+    margin-bottom: 15px;
+  }
+
+  .login-error {
+    font-size: 11px;
+
+    padding: 8px 10px;
+  }
+
+  .login-widget .form-actions {
+    margin: -15px -13px;
+
+    padding: 17px 11px 0;
+  }
+
+  .login-widget .form-actions .btn-success {
+    min-height: 42px;
+
+    padding: 9px 12px;
+
+    font-size: 14px;
+  }
+
+  .login-widget .form-actions .forgot {
+    padding: 13px 0;
+
+    font-size: 11px;
+  }
+
+  .footer-container {
+    width: 100%;
+  }
+
+  .footer-row {
+    padding: 0 6px;
+  }
+
+  .footer-row .small-box {
+    padding: 6px 5px;
+
+    font-size: 10px;
+
+    line-height: 16px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+   320px - 360px
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .background-warpper {
+    padding: 0 5px;
+  }
+
+  .single-widget-container {
+    padding-top: 12px;
+
+    padding-bottom: 15px;
+  }
+
+  .login-widget {
+    width: 100%;
+
+    padding: 9px 11px;
+  }
+
+  .login-widget > header h3 {
+    font-size: 16px;
+
+    line-height: 20px;
+
+    margin: 8px 0 17px;
+  }
+
+  .login-logo {
+    top: 41%;
+  }
+
+  .login-logo img {
+    width: 155px;
+
+    max-width: 68%;
+  }
+
+  .login-widget .form-group {
+    margin-bottom: 15px;
+  }
+
+  .login-widget .form-group label {
+    font-size: 11px;
+
+    margin-bottom: 4px;
+  }
+
+  .login-widget .input-group-addon {
+    width: 38px;
+
+    min-width: 38px;
+
+    font-size: 11px;
+  }
+
+  .login-widget .input-group-addon svg {
+    font-size: 12px;
+  }
+
+  .login-widget .input-group .form-control {
+    height: 40px;
+
+    padding: 8px 10px;
+
+    font-size: 11px;
+  }
+
+  .login-widget .input-group-lg {
+    height: 40px;
+
+    margin-bottom: 13px;
+  }
+
+  .login-widget .form-actions {
+    margin: -13px -11px;
+
+    padding: 15px 9px 0;
+  }
+
+  .login-widget .form-actions .btn-success {
+    min-height: 40px;
+
+    padding: 8px 10px;
+
+    font-size: 13px;
+  }
+
+  .login-widget .form-actions .small-circle {
+    width: 18px;
+    height: 18px;
+
+    font-size: 11px;
+
+    transform: translateX(-34px);
+  }
+
+  .login-widget .form-actions .forgot {
+    padding: 11px 0;
+
+    font-size: 10px;
+
+    line-height: 16px;
+  }
+
+  .footer-row .small-box {
+    font-size: 9px;
+
+    line-height: 15px;
+
+    padding: 5px 3px;
+  }
+}
+
+
+/* =========================================================
+   EXTRA SMALL PHONE
+   320px and below
+========================================================= */
+
+@media (max-width: 320px) {
+
+  .single-widget-container {
+    padding-top: 8px;
+
+    padding-bottom: 10px;
+  }
+
+.login-widget {
+    padding: 8px 9px;
+    height: 280px;
+    margin-top: 95px;
+}
+
+  .login-widget > header h3 {
+    font-size: 15px;
+
+    line-height: 18px;
+
+    margin: 7px 0 14px;
+  }
+
+  .login-logo img {
+    width: 94px;
+}
+
+  .login-widget .input-group-addon {
+    width: 35px;
+
+    min-width: 35px;
+  }
+
+  .login-widget .input-group .form-control {
+    height: 38px;
+
+    padding: 7px 8px;
+
+    font-size: 10px;
+  }
+
+  .login-widget .input-group-lg {
+    height: 38px;
+  }
+
+  .login-widget .form-actions .btn-success {
+    min-height: 38px;
+
+    font-size: 12px;
+  }
+
+  .login-widget .form-actions .forgot {
+    font-size: 9px;
+  }
+
+  .footer-row .small-box {
+    font-size: 8px;
+
+    line-height: 14px;
+  }
+}

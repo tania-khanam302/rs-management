@@ -1,0 +1,496 @@
+* {
+  box-sizing: border-box;
+}
+
+/* ================= HEADER ================= */
+
+.student-header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px 25px;
+
+  /* background: white; */
+   background: #557697;
+  /* border-bottom: 1px solid #ddd; */
+  
+}
+
+.university-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.university-logo img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+.university-title {
+  /* color: #557697; */
+   color: white;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.university-title strong {
+  display: block;
+  font-size: 18px;
+  margin-top: 3px;
+}
+
+.university-title-wrapper {
+    display: flex;
+    text-align: start;
+}
+/* Logout */
+
+/* .logout-button {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 5px;
+
+ color: red;
+background-color: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: -30px;
+  padding: 0;
+} */
+
+/* .logout-button:hover {
+  background: #46637f;
+}  */
+
+.semester-page {
+    /* min-height: 100vh; */
+    background: #3b5773;
+    padding: 25px 30px;
+    color: white;
+    margin-right: 20px;
+    
+}
+
+.semester-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ================= TOP ================= */
+
+/* .semester-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  margin-bottom: 35px;
+} */
+
+.semester-top h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.semester-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.semester-selector label {
+    font-size: 18px;
+}
+.semester-selector select {
+    min-width: 330px;
+    padding: 6px 2px;
+    background: gray;
+    /* background: #526f8b; */
+    color: #e5edf3;
+    border: 1px solid #7891a8;
+    border-radius: 4px;
+    font-size: 12px;
+    outline: none;
+}
+
+/* ================= HISTORY ================= */
+
+.result-history h2 {
+    font-size: 14px;
+    font-weight: 400;
+    /* margin-bottom: 18px; */
+    /* padding-bottom: 15px; */
+    /* border-bottom: 1px solid rgba(255,255,255,0.25); */
+    text-align: start;
+}
+
+/* ================= SEMESTER ================= */
+
+.semester-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+}
+
+.semester-title strong {
+  color: #dce6ee;
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.semester-title span {
+  font-size: 12px;
+  color: #dce6ee;
+}
+
+/* ================= TABLE ================= */
+
+.semester-result-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(30, 55, 75, 0.25);
+}
+/* .semester-result-table th {
+    text-align: start;
+    padding: 11px 15px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(30, 55, 75, 0.25);
+} */
+.semester-result-table th {
+    text-align: start;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(30, 55, 75, 0.25);
+}
+.semester-result-table td {
+   padding: 5px 14px;
+    font-size: 12px;
+    text-align: start;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #e5edf3;
+}
+
+.semester-result-table tbody tr:nth-child(even) {
+  background: rgba(255,255,255,0.08);
+}
+
+.semester-result-table tbody tr:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+    .course-code {
+    color: #67addf;
+  /* color: #b9d9f0; */
+}
+
+/* Grade */
+
+.semester-result-table th:nth-child(2),
+.semester-result-table td:nth-child(2) {
+  width: 110px;
+  text-align: center;
+}
+
+/* GPA */
+
+.semester-result-table th:nth-child(3),
+.semester-result-table td:nth-child(3) {
+  width: 90px;
+  text-align: center;
+}
+
+/* ================= SEMESTER GPA ================= */
+
+.semester-gpa {
+    margin-top: 18px;
+    text-align: right;
+    font-size: 12px;
+    color: white;
+}
+
+.semester-gpa strong {
+  font-size: 12px;
+}
+
+/* ================= ERROR ================= */
+
+.error {
+  padding: 15px;
+  background: rgba(180, 30, 30, 0.3);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.loading {
+  padding: 20px 0;
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .semester-page {
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 15px 8px;
+
+    margin-right: 0;
+  }
+
+  .semester-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* ================= SELECTOR ================= */
+
+  .semester-selector {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 6px;
+
+    margin-bottom: 15px;
+  }
+
+  .semester-selector label {
+    font-size: 13px;
+
+    white-space: nowrap;
+  }
+
+  .semester-selector select {
+    width: 100%;
+    min-width: 0;
+
+    flex: 1;
+
+    padding: 7px 6px;
+
+    font-size: 11px;
+  }
+
+  /* ================= HISTORY ================= */
+
+  .result-history {
+    width: 100%;
+  }
+
+  .result-history h2 {
+    margin: 0 0 8px 0;
+
+    font-size: 12px;
+  }
+
+  /* ================= TABLE ================= */
+
+  /*
+    Mobile screen ছোট হওয়ায় table-কে
+    horizontal scroll করা হবে।
+    এতে কোনো data কেটে যাবে না।
+  */
+
+  .table-responsive {
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .semester-result-table {
+
+    /*
+      Table ছোট হয়ে text নষ্ট হবে না।
+      Screen-এর চেয়ে বড় হলে horizontal scroll হবে।
+    */
+    width: 100%;
+    min-width: 480px;
+
+    border-collapse: collapse;
+  }
+
+  .semester-result-table th {
+    padding: 7px 8px;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+  }
+
+  .semester-result-table td {
+    padding: 7px 8px;
+
+    font-size: 10px;
+
+    line-height: 1.4;
+  }
+
+  /* ================= COURSE ================= */
+
+  .semester-result-table th:first-child,
+  .semester-result-table td:first-child {
+    min-width: 300px;
+  }
+
+  .course-code {
+    white-space: nowrap;
+  }
+
+  /* ================= GRADE ================= */
+
+  .semester-result-table th:nth-child(2),
+  .semester-result-table td:nth-child(2) {
+    width: 65px;
+
+    min-width: 65px;
+
+    text-align: center;
+
+    white-space: nowrap;
+  }
+
+  /* ================= GPA ================= */
+
+  .semester-result-table th:nth-child(3),
+  .semester-result-table td:nth-child(3) {
+    width: 65px;
+
+    min-width: 65px;
+
+    text-align: center;
+
+    white-space: nowrap;
+  }
+
+  /* ================= SEMESTER GPA ================= */
+
+  .semester-gpa {
+    width: 100%;
+
+    margin-top: 12px;
+
+    text-align: right;
+
+    font-size: 11px;
+  }
+
+  .semester-gpa strong {
+    font-size: 12px;
+  }
+
+  /* ================= ERROR ================= */
+
+  .error {
+    width: 100%;
+
+    padding: 10px;
+
+    font-size: 11px;
+  }
+
+  /* ================= LOADING ================= */
+
+  .loading {
+    padding: 15px 0;
+
+    font-size: 11px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   320px - 480px
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .semester-page {
+    padding: 12px 6px;
+
+    margin-right: 0;
+  }
+
+  /* ================= SELECTOR ================= */
+
+  .semester-selector {
+    gap: 5px;
+
+    margin-bottom: 13px;
+  }
+
+  .semester-selector label {
+    font-size: 12px;
+  }
+
+  .semester-selector select {
+    padding: 6px 5px;
+
+    font-size: 10px;
+  }
+
+  /* ================= HISTORY ================= */
+
+  .result-history h2 {
+    font-size: 11px;
+
+    margin-bottom: 7px;
+  }
+
+  /* ================= TABLE ================= */
+
+  .semester-result-table {
+    min-width: 450px;
+  }
+
+  .semester-result-table th {
+    padding: 6px 7px;
+
+    font-size: 9px;
+  }
+
+  .semester-result-table td {
+    padding: 6px 7px;
+
+    font-size: 9px;
+  }
+
+  .semester-result-table th:first-child,
+  .semester-result-table td:first-child {
+    min-width: 280px;
+  }
+
+  .semester-result-table th:nth-child(2),
+  .semester-result-table td:nth-child(2) {
+    width: 60px;
+
+    min-width: 60px;
+  }
+
+  .semester-result-table th:nth-child(3),
+  .semester-result-table td:nth-child(3) {
+    width: 60px;
+
+    min-width: 60px;
+  }
+}

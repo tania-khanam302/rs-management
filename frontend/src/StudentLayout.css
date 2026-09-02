@@ -1,0 +1,688 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  max-width: 100%;
+
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.student-layout {
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.student-header {
+  width: 100%;
+  height: 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px 25px;
+
+  background: white;
+
+  position: relative;
+
+  z-index: 1000;
+}
+
+
+/* =========================================================
+   HEADER MENU
+========================================================= */
+
+.university-header {
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+.header-menu-button {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: black;
+
+  font-size: 24px;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.university-title-wrapper {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: auto;
+
+  margin: 0;
+}
+
+.university-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.university-logo img {
+  width: 300px;
+  height: 50px;
+
+  max-width: 55vw;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.logout-button {
+  width: auto;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: red;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  margin: 0;
+
+  white-space: nowrap;
+
+  flex-shrink: 0;
+}
+
+.logout-button:hover {
+  color: #c40000;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+.student-body {
+  width: 100%;
+
+  display: flex;
+
+  min-height: calc(100vh - 80px);
+
+  position: relative;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.student-content {
+  flex: 1;
+
+  min-width: 0;
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar-content-text {
+  width: 190px;
+  min-width: 190px;
+
+  height: 300px;
+
+  padding: 25px 12px;
+
+  font-weight: bold;
+
+  /* background: #557697; */
+
+  flex-shrink: 0;
+
+  transition: transform 0.3s ease;
+}
+
+.sidebar-item {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 5px 4px;
+
+  margin-bottom: 3px;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  font-size: 14px;
+
+  color: #e5edf3;
+
+  transition: 0.2s;
+}
+
+.sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.10);
+
+  color: white;
+}
+
+.sidebar-item.active {
+  background: rgba(30, 55, 75, 0.35);
+
+  color: white;
+
+  font-weight: 600;
+}
+
+.menu-icon {
+  font-size: 14px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   SIDEBAR OVERLAY
+========================================================= */
+
+.sidebar-overlay {
+  display: none;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .student-header {
+    height: 70px;
+
+    padding: 8px 16px;
+  }
+
+  .student-body {
+    min-height: calc(100vh - 70px);
+  }
+
+  .header-menu-button {
+    width: 32px;
+    height: 32px;
+
+    font-size: 22px;
+  }
+
+  .university-logo img {
+    width: 240px;
+    height: 45px;
+
+    max-width: 50vw;
+  }
+
+  .logout-button {
+    font-size: 13px;
+  }
+
+
+  /* =====================================================
+     MOBILE / TABLET SIDEBAR
+  ===================================================== */
+
+  .sidebar-content-text {
+    position: fixed;
+
+    left: 0;
+    top: 70px;
+
+    width: 240px;
+    min-width: 240px;
+
+    height: calc(100vh - 70px);
+
+    padding: 25px 15px;
+
+    background: #557697;
+
+    z-index: 999;
+
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25);
+
+    overflow-y: auto;
+
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar-content-text.sidebar-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-content-text.sidebar-closed {
+    transform: translateX(-100%);
+  }
+
+
+  /* Overlay */
+
+  .sidebar-overlay {
+    display: block;
+
+    position: fixed;
+
+    left: 0;
+    top: 70px;
+
+    width: 100%;
+    height: calc(100vh - 70px);
+
+    background: rgba(0, 0, 0, 0.45);
+
+    z-index: 998;
+  }
+
+
+  /* Content full width */
+
+  .student-content {
+    width: 100%;
+    min-width: 0;
+
+    flex: 1;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .student-header {
+    height: 60px;
+
+    padding: 7px 10px;
+  }
+
+  .student-body {
+    min-height: calc(100vh - 60px);
+  }
+
+
+  /* Menu */
+
+  .header-menu-button {
+    width: 30px;
+    height: 30px;
+
+    font-size: 20px;
+  }
+
+
+  /* Logo */
+
+  .university-title-wrapper {
+    width: calc(100% - 100px);
+  }
+
+  .university-logo {
+    width: 100%;
+  }
+
+  .university-logo img {
+    width: 100%;
+
+    max-width: 190px;
+
+    height: 38px;
+  }
+
+
+  /* Logout */
+
+  .logout-button {
+    font-size: 12px;
+
+    min-width: 45px;
+  }
+
+
+  /* Sidebar */
+
+  .sidebar-content-text {
+    top: 60px;
+
+    width: 230px;
+    min-width: 230px;
+
+    height: calc(100vh - 60px);
+
+    padding: 20px 14px;
+  }
+
+
+  /* Overlay */
+
+  .sidebar-overlay {
+    top: 60px;
+
+    height: calc(100vh - 60px);
+  }
+
+
+  .sidebar-item {
+    font-size: 13px;
+
+    padding: 7px 5px;
+
+    gap: 7px;
+  }
+
+  .menu-icon {
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   480px
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .student-header {
+    height: 55px;
+
+    padding: 6px 8px;
+  }
+
+  .student-body {
+    min-height: calc(100vh - 55px);
+  }
+
+
+  /* Menu */
+
+  .header-menu-button {
+    width: 28px;
+    height: 28px;
+
+    font-size: 19px;
+  }
+
+
+  /* Logo */
+
+  .university-title-wrapper {
+    width: calc(100% - 85px);
+  }
+
+  .university-logo img {
+    max-width: 165px;
+
+    height: 34px;
+  }
+
+
+  /* Logout */
+
+  .logout-button {
+    min-width: 42px;
+
+    font-size: 11px;
+  }
+
+
+  /* Sidebar */
+
+  .sidebar-content-text {
+    top: 55px;
+
+    width: 210px;
+    min-width: 210px;
+
+    height: calc(100vh - 55px);
+
+    padding: 18px 12px;
+  }
+
+
+  .sidebar-overlay {
+    top: 55px;
+
+    height: calc(100vh - 55px);
+  }
+
+  .sidebar-item {
+    font-size: 12px;
+
+    padding: 7px 4px;
+  }
+
+  .menu-icon {
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+   360px
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .student-header {
+    height: 52px;
+
+    padding: 5px 6px;
+  }
+
+  .student-body {
+    min-height: calc(100vh - 52px);
+  }
+
+
+  /* Menu */
+
+  .header-menu-button {
+    width: 26px;
+    height: 26px;
+
+    font-size: 17px;
+  }
+
+
+  /* Logo */
+
+  .university-title-wrapper {
+    width: calc(100% - 75px);
+  }
+
+  .university-logo img {
+    max-width: 145px;
+
+    height: 30px;
+  }
+
+
+  /* Logout */
+
+  .logout-button {
+    min-width: 38px;
+
+    font-size: 10px;
+  }
+
+
+  /* Sidebar */
+
+  .sidebar-content-text {
+    top: 52px;
+
+    width: 200px;
+    min-width: 200px;
+
+    height: calc(100vh - 52px);
+
+    padding: 15px 10px;
+  }
+
+
+  .sidebar-overlay {
+    top: 52px;
+
+    height: calc(100vh - 52px);
+  }
+
+
+  .sidebar-item {
+    font-size: 11px;
+
+    padding: 7px 4px;
+  }
+
+  .menu-icon {
+    font-size: 11px;
+  }
+}
+
+
+/* =========================================================
+   EXTRA SMALL PHONE
+   320px
+========================================================= */
+
+@media (max-width: 320px) {
+
+  .student-header {
+    height: 50px;
+
+    padding: 5px;
+  }
+
+  .student-body {
+    min-height: calc(100vh - 50px);
+  }
+
+
+  .university-title-wrapper {
+    width: calc(100% - 70px);
+  }
+
+  .university-logo img {
+    max-width: 130px;
+
+    height: 28px;
+  }
+
+
+  .header-menu-button {
+    width: 24px;
+    height: 24px;
+
+    font-size: 16px;
+  }
+
+
+  .logout-button {
+    min-width: 35px;
+
+    font-size: 9px;
+  }
+
+
+  .sidebar-content-text {
+    top: 50px;
+
+    width: 190px;
+    min-width: 190px;
+
+    height: calc(100vh - 50px);
+
+    padding: 12px 8px;
+  }
+
+
+  .sidebar-overlay {
+    top: 50px;
+
+    height: calc(100vh - 50px);
+  }
+
+
+  .sidebar-item {
+    font-size: 10px;
+
+    padding: 6px 3px;
+  }
+
+  .menu-icon {
+    font-size: 10px;
+  }
+}

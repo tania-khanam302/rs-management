@@ -1,0 +1,679 @@
+/* =========================================
+   PERSONAL PAGE
+========================================= */
+
+.personal-page {
+    width: 96%;
+    /* min-height: 100vh; */
+    /* background: #cfcfcf; */
+    font-family: Arial,
+    Helvetica,
+    sans-serif;
+    color: #000;
+    font-size: 12px;
+    /* margin: 20px; */
+    /* margin: auto; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 2%;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+/* .personal-header {
+  position: relative;
+  height: 143px;
+  background: #1597ed;
+  border-bottom: 1px solid #aaa;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+} */
+
+
+
+
+/* =========================================
+   UNIVERSITY HEADER
+========================================= */
+
+/* .university-header {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    margin-left: 0;
+}
+
+
+.university-logo {
+  width: 105px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+
+.logo-circle {
+  width: 82px;
+
+  height: 82px;
+
+  border-radius: 50%;
+
+  background: #f2f2f2;
+
+  border: 4px solid #0c4d00;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #003e75;
+
+  font-weight: bold;
+
+  font-size: 22px;
+
+  box-shadow:
+    inset 0 0 0 2px #e67e00;
+}
+
+
+.university-title {
+  color: #000;
+
+  line-height: 1.2;
+
+  font-size: 29px;
+
+  font-weight: bold;
+text-align: left;
+  margin-left: 10px;
+}
+
+
+.university-title strong {
+  display: block;
+
+  font-size: 36px;
+
+  margin-top: 5px;
+} */
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+/* .logout-button {
+  position: absolute;
+
+  right: 7px;
+
+  top: 9px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: red;
+
+  text-decoration: underline;
+
+  cursor: pointer;
+
+  font-size: 11px;
+
+  padding: 0;
+} */
+
+
+/* =========================================
+   BODY
+========================================= */
+/* 
+.personal-body {
+  display: flex;
+
+  min-height: 500px;
+
+  padding: 8px 10px 20px 10px;
+
+  box-sizing: border-box;
+} */
+
+
+.personal-body {
+  display: flex;
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  background: #f5f7fa;
+}
+
+   /* SIDEBAR */
+
+/* .personal-sidebar {
+  width: 190px;
+  min-width: 190px;
+  padding: 25px 12px;
+  background: #557697;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 6px 15px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 15px;
+  color: #e5edf3;
+  transition: 0.2s;
+}
+
+.sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.10);
+  color: white;
+}
+
+.sidebar-item.active {
+  background: rgba(30, 55, 75, 0.35);
+  color: white;
+  font-weight: 600;
+} */
+
+/* 3 line menu icon */
+/* .menu-icon {
+  width: 18px;
+  height: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.menu-icon span {
+  width: 18px;
+  height: 2px;
+  background: #e5edf3;
+  border-radius: 2px;
+}
+
+.sidebar-item:hover .menu-icon span,
+.sidebar-item.active .menu-icon span {
+  background: white;
+} */
+
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.personal-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px 40px;
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   INFORMATION BOX
+========================================= */
+
+.personal-information-box {
+  width: 100%;
+  /* max-width: 1050px; */
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 25px 30px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================================
+   TITLE
+========================================= */
+
+.personal-title {
+    position: relative;
+    text-align: start;
+    /* display: inline-block; */
+    /* background: #d0d0d0; */
+    /* margin-top: -7px; */
+    /* padding: 0 5px; */
+    font-size: 13px;
+    color: #000;
+}
+
+/* =========================================
+   FORM
+========================================= */
+
+.personal-form {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  column-gap: 12px;
+padding:40px 10px;
+  padding-top: 8px;
+  margin-top:30px;
+}
+
+
+.personal-left,
+.personal-right {
+  width: 100%;
+}
+
+
+/* =========================================
+   ROW
+========================================= */
+
+.personal-row {
+  display: flex;
+
+  align-items: center;
+
+  min-height: 25px;
+
+  margin-bottom: 3px;
+}
+
+
+.personal-row > label {
+  width: 100px;
+
+  min-width: 100px;
+
+  text-align: right;
+
+  padding-right: 8px;
+
+  box-sizing: border-box;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+.personal-row input {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+.personal-row input:-webkit-autofill,
+.personal-row input:-webkit-autofill:hover,
+.personal-row input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+.personal-row input[type="text"],
+.personal-row input[type="email"],
+.personal-row select {
+  height: 20px;
+
+  border: 1px solid #999;
+
+  background: #fff;
+
+  border-radius: 0;
+
+  box-sizing: border-box;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+
+  padding: 1px 4px;
+
+  color: #000;
+}
+
+
+.personal-row input[type="text"],
+.personal-row input[type="email"] {
+  width: 100%;
+}
+
+
+/* =========================================
+   ADDRESS
+========================================= */
+
+.address-row {
+  align-items: flex-start;
+
+  min-height: 62px;
+}
+
+
+.address-row > label {
+  padding-top: 4px;
+}
+
+
+.address-row textarea {
+  width: 100%;
+
+  height: 58px;
+
+  resize: none;
+
+  border: 1px solid #999;
+
+  border-radius: 0;
+
+  background: white;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 12px;
+
+  padding: 3px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   DATE SELECT
+========================================= */
+
+.date-selects {
+  display: flex;
+
+  gap: 3px;
+
+  flex: 1;
+}
+
+
+.date-selects select {
+  width: auto;
+
+  min-width: 58px;
+}
+
+
+.date-selects select:nth-child(2) {
+  min-width: 88px;
+}
+
+
+.date-selects input {
+  width: 58px !important;
+}
+
+
+/* =========================================
+   BLOOD GROUP
+========================================= */
+
+.blood-select {
+  width: 100%;
+}
+
+
+/* =========================================
+   SEX
+========================================= */
+
+.sex-row {
+  align-items: center;
+}
+
+
+.radio-area {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+}
+
+
+.radio-area label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 2px;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+}
+
+
+.radio-area input {
+  margin: 0;
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.personal-message {
+  grid-column: 1 / 3;
+
+  text-align: center;
+
+  min-height: 20px;
+
+  padding-top: 3px;
+}
+
+
+.success-message {
+  color: green;
+
+  font-weight: bold;
+}
+
+
+.error-message {
+  color: red;
+
+  font-weight: bold;
+}
+
+.university-logo img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+/* =========================================
+   BUTTONS
+========================================= */
+
+.personal-actions {
+  grid-column: 1 / 3;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 5px;
+
+  margin-top: 3px;
+}
+
+
+.update-button,
+.cancel-button {
+  height: 23px;
+
+  padding: 1px 9px;
+
+  border: 1px solid #888;
+
+  border-radius: 0;
+
+  background: #eeeeee;
+
+  color: #000;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+
+.update-button:hover,
+.cancel-button:hover {
+  background: #ddd;
+}
+
+
+.update-button:active,
+.cancel-button:active {
+  background: #ccc;
+
+  border-color: #555;
+}
+
+
+.update-button:disabled {
+  color: #777;
+
+  cursor: wait;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.personal-loading {
+  width: 100%;
+
+  height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-family:
+    "Times New Roman",
+    serif;
+
+  font-size: 14px;
+
+  color: #000;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+
+  .university-title {
+    font-size: 20px;
+  }
+
+  .university-title strong {
+    font-size: 25px;
+  }
+
+  
+
+  
+  .personal-form {
+    grid-template-columns: 1fr;
+  }
+
+  .personal-message,
+  .personal-actions {
+    grid-column: 1;
+  }
+
+  .personal-information-box {
+    max-width: 100%;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  /* .personal-header {
+    height: 110px;
+  } */
+
+  .header-clock {
+    display: none;
+  }
+
+  .university-logo {
+    width: 65px;
+  }
+
+  .logo-circle {
+    width: 55px;
+    height: 55px;
+    font-size: 16px;
+  }
+
+  .university-title {
+    font-size: 16px;
+  }
+
+  .university-title strong {
+    font-size: 20px;
+  }
+
+  /* .personal-body {
+    padding: 5px;
+  }
+
+  .personal-sidebar {
+    width: 105px;
+    min-width: 105px;
+  }
+
+
+  .personal-content {
+    padding-left: 7px;
+  }
+
+  .personal-row > label {
+    width: 85px;
+    min-width: 85px;
+  } */
+
+}
