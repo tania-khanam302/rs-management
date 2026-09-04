@@ -12,10 +12,14 @@ const app = express();
 
 app.use(
     cors({
-        origin: "http://localhost:5174",
+        origin: [
+            "http://localhost:5174",
+            "https://vercel.app"
+        ],
         credentials: true,
     })
 );
+
 
 
 // ================= Middleware =================
