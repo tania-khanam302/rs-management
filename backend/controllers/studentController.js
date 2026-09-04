@@ -362,18 +362,25 @@ export const loginStudent = async (req, res) => {
       });
     }
 
-    // Find student by Student ID
-    const student = await Student.findOne({
-      studentId,
-    });
+  const student = await Student.findOne({
+  studentId: studentId.trim(),
+});
 
-    // Student not found
-    if (!student) {
-      return res.status(401).json({
-        success: false,
-        message: "Invalid Student ID or Password",
-      });
-    }
+console.log("Student ID received:", studentId);
+console.log("Student found:", !!student);
+
+if (student) {
+  console.log("Database Student ID:", student.studentId);
+  console.log("Password exists:", !!student.password);
+  console.log("Password hash:", student.password);
+}
+
+if (!student) {
+  return res.status(401).json({
+    success: false,
+    message: "Invalid Student ID or Password",
+  });
+}
 
     // Check password
     const isPasswordCorrect = await bcrypt.compare(

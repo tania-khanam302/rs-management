@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "cross-env VITE_API_URL=https://onrender.com node node_modules/vite/bin/vite.js build",
+    "build": "cross-env VITE_API_URL=https://rs-management-vgcw.onrender.com node node_modules/vite/bin/vite.js build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
