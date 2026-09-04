@@ -123,16 +123,13 @@ a {
 }
 
 .login-logo img {
-  width: 230px;
+  /* width: 230px; */
+  width:auto;
   max-width: 80%;
-
   height: auto;
-
   opacity: 0.9;
-
   user-select: none;
 }
-
 
 /* =========================================================
    HEADER
