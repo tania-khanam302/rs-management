@@ -615,12 +615,17 @@ const API_URL = "https://rs-management-vgcw.onrender.com";
         {cgpa && (
           <div className="cgpa-card">
             <div className="summary-grid">
-              <div className="overall-cgpa">
+              {/* <div className="overall-cgpa">
                 <span>
                   CGPA:
                 </span>
                 <strong>{cgpa.cgpa}</strong>
-              </div>
+              </div> */}
+              <div className="overall-cgpa">
+  <span>CGPA:</span>
+  <strong>{Number(cgpa.cgpa).toFixed(3)}</strong>
+</div>
+
             </div>
           </div>
         )}
