@@ -18,16 +18,18 @@ function SemesterResult() {
       setError("");
 
       const response = await axios.get(
-        `http://localhost:4000/api/results/semester/${semester}`,
+        `https://rs-management-vgcw.onrender.com/api/results/semester/${semester}`,
         {
           withCredentials: true,
-        },
+        }
       );
 
       setResult(response.data.result);
     } catch (error) {
       setResult(null);
-      setError(error.response?.data?.message || "Result not found");
+      setError(
+        error.response?.data?.message || "Result not found"
+      );
     } finally {
       setLoading(false);
     }
@@ -36,6 +38,7 @@ function SemesterResult() {
   return (
     <div className="semester-page">
       <div className="semester-container">
+
         <div className="semester-top">
           <div className="semester-selector">
             <label htmlFor="semester">Session :</label>
@@ -43,7 +46,9 @@ function SemesterResult() {
             <select
               id="semester"
               value={semester}
-              onChange={(e) => setSemester(Number(e.target.value))}
+              onChange={(e) =>
+                setSemester(Number(e.target.value))
+              }
             >
               <option value={1}>Spring 2022</option>
               <option value={2}>Fall 2022</option>
@@ -60,9 +65,18 @@ function SemesterResult() {
         {/* ================= RESULT HISTORY ================= */}
         <div className="result-history">
           <h2>Result History</h2>
-          {loading && <div className="loading">Loading result...</div>}
 
-          {error && !loading && <div className="error">{error}</div>}
+          {loading && (
+            <div className="loading">
+              Loading result...
+            </div>
+          )}
+
+          {error && !loading && (
+            <div className="error">
+              {error}
+            </div>
+          )}
 
           {!loading && result && (
             <>
@@ -89,7 +103,9 @@ function SemesterResult() {
 
                         <td>{subject.grade}</td>
 
-                        <td>{Number(subject.gradePoint).toFixed(2)}</td>
+                        <td>
+                          {Number(subject.gradePoint).toFixed(2)}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -97,10 +113,11 @@ function SemesterResult() {
               </div>
 
               {/* ================= GPA ================= */}
-
               <div className="semester-gpa">
                 Semester GPA:{" "}
-                <strong>{Number(result.semesterGPA).toFixed(2)}</strong>
+                <strong>
+                  {Number(result.semesterGPA).toFixed(2)}
+                </strong>
               </div>
             </>
           )}
