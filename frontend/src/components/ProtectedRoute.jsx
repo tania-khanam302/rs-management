@@ -10,7 +10,7 @@ function ProtectedRoute() {
     const checkLogin = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/students/profile",
+          "https://rs-management-vgcw.onrender.com/api/students/profile",
           {
             withCredentials: true,
           }
