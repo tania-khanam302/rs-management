@@ -18,7 +18,7 @@ function SemesterResult() {
       setError("");
 
       const response = await axios.get(
-        `http://localhost:4000/api/results/semester/${semester}`,
+        `https://rs-management-vgcw.onrender.com/api/results/semester/${semester}`,
         {
           withCredentials: true,
         },

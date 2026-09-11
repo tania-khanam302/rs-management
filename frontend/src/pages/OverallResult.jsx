@@ -53,7 +53,7 @@ function ResultSearch() {
 
       // ================= Get All Results =================
       const resultResponse = await axios.get(
-        "http://localhost:4000/api/results/my-results",
+        "http://localhost:4000/api/students/profile",
         {
           withCredentials: true,
         },
@@ -65,7 +65,7 @@ function ResultSearch() {
 
       // ================= Get CGPA =================
       const cgpaResponse = await axios.get(
-        "http://localhost:4000/api/results/cgpa",
+        "https://rs-management-vgcw.onrender.com/api/students/certificate/download",
         {
           withCredentials: true,
         },

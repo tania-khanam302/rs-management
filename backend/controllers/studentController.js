@@ -4,146 +4,9 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import PDFDocument from "pdfkit";
 
-// // ================= Register Student =================
-
-// export const registerStudent = async (req, res) => {
-//     try {
-//         const {
-//             studentId,
-//             name,
-//             email,
-//             password,
-//             department,
-//             year,
-//             currentSemester
-//         } = req.body;
-
-//         // Check if student already exists
-//         const existingStudent = await Student.findOne({ studentId });
-
-//         if (existingStudent) {
-//             return res.status(400).json({
-//                 success: false,
-//                 message: "Student already exists"
-//             });
-//         }
-
-//         // Hash password
-//         const hashedPassword = await bcrypt.hash(password, 10);
-
-//         // Create student
-//         await Student.create({
-//             studentId,
-//             name,
-//             email,
-//             password: hashedPassword,
-//             department,
-//             year,
-//             currentSemester
-//         });
-
-//         res.status(201).json({
-//             success: true,
-//             message: "Student registered successfully"
-//         });
-
-//     } catch (error) {
-//         res.status(500).json({
-//             success: false,
-//             message: error.message
-//         });
-//     }
-// };
-
-// ================= Login Student =================
-
-// export const loginStudent = async (req, res) => {
-//     try {
-//         const { studentId, password } = req.body;
-
-//         // Check required fields
-//         if (!studentId || !password) {
-//             return res.status(400).json({
-//                 success: false,
-//                 message: "Student ID and password are required"
-//             });
-//         }
-
-//         // Find student
-//         const student = await Student.findOne({ studentId });
-
-//         if (!student) {
-//             return res.status(404).json({
-//                 success: false,
-//                 message: "Student not found"
-//             });
-//         }
-
-//         // Check password
-//         const isPasswordCorrect = await bcrypt.compare(
-//             password,
-//             student.password
-//         );
-
-//         if (!isPasswordCorrect) {
-//             return res.status(401).json({
-//                 success: false,
-//                 message: "Invalid password"
-//             });
-//         }
-
-//         // ================= Create JWT Token =================
-
-//         const token = jwt.sign(
-//             {
-//                 studentId: student.studentId,
-//                 id: student._id
-//             },
-//             process.env.JWT_SECRET,
-//             {
-//                 expiresIn: process.env.JWT_EXPIRE || "7d"
-//             }
-//         );
-
-//         // ================= Store Token in Cookie =================
-
-//         res.cookie("token", token, {
-//             httpOnly: true,
-//             secure: false,
-//             maxAge:
-//                 Number(process.env.COOKIE_EXPIRE || 7) *
-//                 24 *
-//                 60 *
-//                 60 *
-//                 1000
-//         });
-
-//         // ================= Login Successful =================
-
-//         res.status(200).json({
-//             success: true,
-//             message: "Student login successful",
-
-//             student: {
-//                 studentId: student.studentId,
-//                 name: student.name,
-//                 email: student.email,
-//                 department: student.department,
-//                 year: student.year,
-//                 currentSemester: student.currentSemester
-//             }
-//         });
-
-//     } catch (error) {
-//         res.status(500).json({
-//             success: false,
-//             message: error.message
-//         });
-//     }
-// };
-
-// ================= Register Student =================
-// ================= Register Student =================
+// =====================================================
+// Register Student
+// =====================================================
 export const registerStudent = async (req, res) => {
   try {
     const {
@@ -152,11 +15,28 @@ export const registerStudent = async (req, res) => {
       password,
       department,
       year,
-      currentSemester
+      currentSemester,
     } = req.body;
 
+    // Check required fields
+    if (
+      !studentId ||
+      !name ||
+      !password ||
+      !department ||
+      !year ||
+      currentSemester === undefined
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "All required fields are required",
+      });
+    }
+
     // Check if student already exists
-    const existingStudent = await Student.findOne({ studentId });
+    const existingStudent = await Student.findOne({
+      studentId: studentId.trim(),
+    });
 
     if (existingStudent) {
       return res.status(400).json({
@@ -165,193 +45,38 @@ export const registerStudent = async (req, res) => {
       });
     }
 
-    // Create student
+    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create student
     await Student.create({
-      studentId,
-      name,
+      studentId: studentId.trim(),
+      name: name.trim(),
       password: hashedPassword,
       department,
-      year,
-      currentSemester,
+      year: String(year),
+      currentSemester: Number(currentSemester),
     });
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       message: "Student registered successfully",
     });
-
   } catch (error) {
-    res.status(500).json({
+    console.error("Register Error:", error);
+
+    return res.status(500).json({
       success: false,
       message: error.message,
     });
   }
 };
-// ================= Login Student =================
-// export const loginStudent = async (req, res) => {
-//   try {
-//     const { studentId, currentSemester, department, year } = req.body;
 
-//     // Check required fields
-//     if (!studentId || !currentSemester || !department || !year) {
-//       return res.status(400).json({
-//         success: false,
-//         message: "Student ID, Semester, Department and Year are required",
-//       });
-//     }
-
-//     // Find student
-//     const student = await Student.findOne({
-//       studentId,
-//       currentSemester: Number(currentSemester),
-//       department,
-//       year: String(year),
-//     });
-
-//     if (!student) {
-//       return res.status(401).json({
-//         success: false,
-//         message: "Student information does not match",
-//       });
-//     }
-
-//     // ================= Create JWT Token =================
-
-//     const token = jwt.sign(
-//       {
-//         studentId: student.studentId,
-//         id: student._id,
-//       },
-//       process.env.JWT_SECRET,
-//       {
-//         expiresIn: process.env.JWT_EXPIRE || "7d",
-//       },
-//     );
-
-//     // ================= Store Token in Cookie =================
-
-//     res.cookie("token", token, {
-//       httpOnly: true,
-//       secure: false,
-//       maxAge: Number(process.env.COOKIE_EXPIRE || 7) * 24 * 60 * 60 * 1000,
-//     });
-
-//     // ================= Login Successful =================
-
-//     res.status(200).json({
-//       success: true,
-//       message: "Student login successful",
-
-//       student: {
-//         studentId: student.studentId,
-//         name: student.name,
-//         email: student.email,
-//         department: student.department,
-//         year: student.year,
-//         currentSemester: student.currentSemester,
-//       },
-//     });
-//   } catch (error) {
-//     res.status(500).json({
-//       success: false,
-//       message: error.message,
-//     });
-//   }
-// };
-
-// ================= Login Student =================
-// export const loginStudent = async (req, res) => {
-//   try {
-//     const { studentId, password } = req.body;
-
-//     // Check required fields
-//     if (!studentId || !password) {
-//       return res.status(400).json({
-//         success: false,
-//         message: "Student ID and Password are required",
-//       });
-//     }
-
-//     // Find student
-//     const student = await Student.findOne({
-//       studentId: studentId.trim(),
-//     });
-
-//     if (!student) {
-//       return res.status(401).json({
-//         success: false,
-//         message: "Invalid Student ID or Password",
-//       });
-//     }
-
-//     // Check password
-//     const isPasswordCorrect = await bcrypt.compare(
-//       password,
-//       student.password
-//     );
-
-//     if (!isPasswordCorrect) {
-//       return res.status(401).json({
-//         success: false,
-//         message: "Invalid Student ID or Password",
-//       });
-//     }
-
-//     // Create JWT
-//     const token = jwt.sign(
-//       {
-//         studentId: student.studentId,
-//         id: student._id,
-//       },
-//       process.env.JWT_SECRET,
-//       {
-//         expiresIn: process.env.JWT_EXPIRE || "7d",
-//       }
-//     );
-
-//     // Store token in cookie
-//     res.cookie("token", token, {
-//       httpOnly: true,
-//       secure: false,
-//       sameSite: "lax",
-//       maxAge:
-//         Number(process.env.COOKIE_EXPIRE || 7) *
-//         24 *
-//         60 *
-//         60 *
-//         1000,
-//     });
-
-//     // Login successful
-//     res.status(200).json({
-//       success: true,
-//       message: "Student login successful",
-
-//       student: {
-//         studentId: student.studentId,
-//         name: student.name,
-//         email: student.email,
-//         department: student.department,
-//         year: student.year,
-//         currentSemester: student.currentSemester,
-//         courseCompleted: student.courseCompleted,
-//       },
-//     });
-
-//   } catch (error) {
-//     res.status(500).json({
-//       success: false,
-//       message: error.message,
-//     });
-//   }
-// };
-
-// ================= Login Student =================
+// =====================================================
+// Login Student
+// =====================================================
 export const loginStudent = async (req, res) => {
   try {
-
-    // Get login information
     const { studentId, password } = req.body;
 
     // Check required fields
@@ -362,25 +87,17 @@ export const loginStudent = async (req, res) => {
       });
     }
 
-  const student = await Student.findOne({
-  studentId: studentId.trim(),
-});
+    // Find student
+    const student = await Student.findOne({
+      studentId: studentId.trim(),
+    });
 
-console.log("Student ID received:", studentId);
-console.log("Student found:", !!student);
-
-if (student) {
-  console.log("Database Student ID:", student.studentId);
-  console.log("Password exists:", !!student.password);
-  console.log("Password hash:", student.password);
-}
-
-if (!student) {
-  return res.status(401).json({
-    success: false,
-    message: "Invalid Student ID or Password",
-  });
-}
+    if (!student) {
+      return res.status(401).json({
+        success: false,
+        message: "Invalid Student ID or Password",
+      });
+    }
 
     // Check password
     const isPasswordCorrect = await bcrypt.compare(
@@ -388,7 +105,6 @@ if (!student) {
       student.password
     );
 
-    // Wrong password
     if (!isPasswordCorrect) {
       return res.status(401).json({
         success: false,
@@ -396,8 +112,7 @@ if (!student) {
       });
     }
 
-    // ================= Create JWT =================
-
+    // Create JWT token
     const token = jwt.sign(
       {
         studentId: student.studentId,
@@ -409,12 +124,12 @@ if (!student) {
       }
     );
 
-    // ================= Store JWT in Cookie =================
-
+    // Store JWT in cookie
+    // Required for Vercel frontend + Render backend
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
-
+      secure: true,
+      sameSite: "none",
       maxAge:
         Number(process.env.COOKIE_EXPIRE || 7) *
         24 *
@@ -423,11 +138,9 @@ if (!student) {
         1000,
     });
 
-    // ================= Login Successful =================
-
-    res.status(200).json({
+    // Login successful
+    return res.status(200).json({
       success: true,
-
       message: "Student login successful",
 
       student: {
@@ -440,18 +153,45 @@ if (!student) {
         courseCompleted: student.courseCompleted,
       },
     });
-
   } catch (error) {
-
     console.error("Login Error:", error);
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: error.message,
     });
   }
 };
-// ================= Get Student Profile =================
+
+// =====================================================
+// Logout Student
+// =====================================================
+export const logoutStudent = async (req, res) => {
+  try {
+    res.cookie("token", "", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      expires: new Date(0),
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Student logged out successfully",
+    });
+  } catch (error) {
+    console.error("Logout Error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+// =====================================================
+// Get Student Profile
+// =====================================================
 export const getStudentProfile = async (req, res) => {
   try {
     const student = await Student.findOne({
@@ -465,18 +205,23 @@ export const getStudentProfile = async (req, res) => {
       });
     }
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       student,
     });
   } catch (error) {
-    res.status(500).json({
+    console.error("Get Profile Error:", error);
+
+    return res.status(500).json({
       success: false,
       message: error.message,
     });
   }
 };
-// ================= Update Student Profile =================
+
+// =====================================================
+// Update Student Profile
+// =====================================================
 export const updateStudentProfile = async (req, res) => {
   try {
     const student = await Student.findOne({
@@ -490,8 +235,7 @@ export const updateStudentProfile = async (req, res) => {
       });
     }
 
-    // ================= Personal Information =================
-
+    // Personal Information
     if (req.body.name !== undefined) {
       student.name = req.body.name;
     }
@@ -532,8 +276,7 @@ export const updateStudentProfile = async (req, res) => {
       student.religion = req.body.religion;
     }
 
-    // ================= Enrollment =================
-
+    // Enrollment Information
     if (req.body.enrollmentDay !== undefined) {
       student.enrollmentDay = req.body.enrollmentDay;
     }
@@ -546,8 +289,7 @@ export const updateStudentProfile = async (req, res) => {
       student.enrollmentYear = req.body.enrollmentYear;
     }
 
-    // ================= Date of Birth =================
-
+    // Date of Birth
     if (req.body.dobDay !== undefined) {
       student.dobDay = req.body.dobDay;
     }
@@ -560,31 +302,31 @@ export const updateStudentProfile = async (req, res) => {
       student.dobYear = req.body.dobYear;
     }
 
-    // Save database
+    // Save updated student
     await student.save();
 
-    // Return updated student
+    // Remove password from response
     const updatedStudent = student.toObject();
-
     delete updatedStudent.password;
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: "Student profile updated successfully",
       student: updatedStudent,
     });
-
   } catch (error) {
     console.error("Profile Update Error:", error);
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: error.message,
     });
   }
 };
 
-// ================= Complete Course =================
+// =====================================================
+// Complete Course
+// =====================================================
 export const completeCourse = async (req, res) => {
   try {
     const student = await Student.findOne({
@@ -602,20 +344,24 @@ export const completeCourse = async (req, res) => {
 
     await student.save();
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: "Course completed successfully",
       courseCompleted: student.courseCompleted,
     });
   } catch (error) {
-    res.status(500).json({
+    console.error("Complete Course Error:", error);
+
+    return res.status(500).json({
       success: false,
       message: error.message,
     });
   }
 };
 
-// ================= Certificate =================
+// =====================================================
+// Get Certificate Information
+// =====================================================
 export const getCertificate = async (req, res) => {
   try {
     const student = await Student.findOne({
@@ -637,7 +383,7 @@ export const getCertificate = async (req, res) => {
       });
     }
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: "Certificate is available",
       certificate: {
@@ -649,14 +395,18 @@ export const getCertificate = async (req, res) => {
       },
     });
   } catch (error) {
-    res.status(500).json({
+    console.error("Certificate Error:", error);
+
+    return res.status(500).json({
       success: false,
       message: error.message,
     });
   }
 };
 
-// ================= Download Certificate =================
+// =====================================================
+// Download Certificate
+// =====================================================
 export const downloadCertificate = async (req, res) => {
   try {
     const student = await Student.findOne({
@@ -678,7 +428,7 @@ export const downloadCertificate = async (req, res) => {
       });
     }
 
-    // Get Results
+    // Get student results
     const results = await Result.find({
       studentId: student.studentId,
     });
@@ -690,25 +440,39 @@ export const downloadCertificate = async (req, res) => {
       });
     }
 
-    // ================= Calculate CGPA =================
+    // =================================================
+    // Calculate CGPA
+    // =================================================
 
     let totalCredit = 0;
     let totalGradePoint = 0;
 
     results.forEach((result) => {
       result.subjects.forEach((subject) => {
-        totalCredit += subject.credit;
-        totalGradePoint += subject.credit * subject.gradePoint;
+        totalCredit += Number(subject.credit);
+        totalGradePoint +=
+          Number(subject.credit) * Number(subject.gradePoint);
       });
     });
 
+    if (totalCredit === 0) {
+      return res.status(400).json({
+        success: false,
+        message: "Unable to calculate CGPA",
+      });
+    }
+
     const cgpa = totalGradePoint / totalCredit;
 
-    // ================= Certificate Number =================
+    // =================================================
+    // Certificate Number
+    // =================================================
 
     const certificateNumber = `CERT-${student.department}-${student.year}-${student.studentId}`;
 
-    // ================= Create PDF =================
+    // =================================================
+    // Create PDF
+    // =================================================
 
     const doc = new PDFDocument({
       size: "A4",
@@ -720,21 +484,26 @@ export const downloadCertificate = async (req, res) => {
 
     res.setHeader(
       "Content-Disposition",
-      `attachment; filename="${student.studentId}-certificate.pdf"`,
+      `attachment; filename="${student.studentId}-certificate.pdf"`
     );
 
     doc.pipe(res);
 
-    // ================= Page Size =================
-
+    // Page dimensions
     const pageWidth = doc.page.width;
     const pageHeight = doc.page.height;
 
-    // ================= Background =================
+    // =================================================
+    // Background
+    // =================================================
 
-    doc.rect(0, 0, pageWidth, pageHeight).fill("#fffdf5");
+    doc
+      .rect(0, 0, pageWidth, pageHeight)
+      .fill("#fffdf5");
 
-    // ================= Outer Border =================
+    // =================================================
+    // Outer Border
+    // =================================================
 
     doc
       .lineWidth(8)
@@ -742,7 +511,9 @@ export const downloadCertificate = async (req, res) => {
       .rect(20, 20, pageWidth - 40, pageHeight - 40)
       .stroke();
 
-    // ================= Inner Border =================
+    // =================================================
+    // Inner Border
+    // =================================================
 
     doc
       .lineWidth(2)
@@ -750,7 +521,9 @@ export const downloadCertificate = async (req, res) => {
       .rect(32, 32, pageWidth - 64, pageHeight - 64)
       .stroke();
 
-    // ================= University Name =================
+    // =================================================
+    // University Name
+    // =================================================
 
     doc
       .font("Helvetica-Bold")
@@ -770,7 +543,9 @@ export const downloadCertificate = async (req, res) => {
         width: pageWidth,
       });
 
-    // ================= Decorative Line =================
+    // =================================================
+    // Decorative Line
+    // =================================================
 
     doc
       .moveTo(260, 120)
@@ -779,7 +554,9 @@ export const downloadCertificate = async (req, res) => {
       .strokeColor("#c9a227")
       .stroke();
 
-    // ================= Certificate Title =================
+    // =================================================
+    // Certificate Title
+    // =================================================
 
     doc
       .font("Helvetica-Bold")
@@ -790,7 +567,9 @@ export const downloadCertificate = async (req, res) => {
         width: pageWidth,
       });
 
-    // ================= Subtitle =================
+    // =================================================
+    // Subtitle
+    // =================================================
 
     doc
       .font("Helvetica")
@@ -801,7 +580,9 @@ export const downloadCertificate = async (req, res) => {
         width: pageWidth,
       });
 
-    // ================= Student Name =================
+    // =================================================
+    // Student Name
+    // =================================================
 
     doc
       .font("Helvetica-Bold")
@@ -813,7 +594,6 @@ export const downloadCertificate = async (req, res) => {
       });
 
     // Name underline
-
     doc
       .moveTo(250, 265)
       .lineTo(pageWidth - 250, 265)
@@ -821,7 +601,9 @@ export const downloadCertificate = async (req, res) => {
       .strokeColor("#c9a227")
       .stroke();
 
-    // ================= Student Information =================
+    // =================================================
+    // Student Information
+    // =================================================
 
     doc
       .font("Helvetica")
@@ -832,17 +614,29 @@ export const downloadCertificate = async (req, res) => {
         width: pageWidth,
       });
 
-    doc.text(`Department: ${student.department}`, 0, 310, {
-      align: "center",
-      width: pageWidth,
-    });
+    doc.text(
+      `Department: ${student.department}`,
+      0,
+      310,
+      {
+        align: "center",
+        width: pageWidth,
+      }
+    );
 
-    doc.text(`Academic Year: ${student.year}`, 0, 335, {
-      align: "center",
-      width: pageWidth,
-    });
+    doc.text(
+      `Academic Year: ${student.year}`,
+      0,
+      335,
+      {
+        align: "center",
+        width: pageWidth,
+      }
+    );
 
-    // ================= Completion Text =================
+    // =================================================
+    // Completion Text
+    // =================================================
 
     doc
       .fontSize(15)
@@ -853,10 +647,12 @@ export const downloadCertificate = async (req, res) => {
         {
           align: "center",
           width: pageWidth,
-        },
+        }
       );
 
-    // ================= CGPA =================
+    // =================================================
+    // CGPA
+    // =================================================
 
     doc
       .font("Helvetica-Bold")
@@ -867,7 +663,9 @@ export const downloadCertificate = async (req, res) => {
         width: pageWidth,
       });
 
-    // ================= Issue Date =================
+    // =================================================
+    // Issue Date
+    // =================================================
 
     const issueDate = new Date().toLocaleDateString("en-GB");
 
@@ -875,12 +673,19 @@ export const downloadCertificate = async (req, res) => {
       .font("Helvetica")
       .fontSize(12)
       .fillColor("#333333")
-      .text(`Certificate issued on: ${issueDate}`, 0, 450, {
-        align: "center",
-        width: pageWidth,
-      });
+      .text(
+        `Certificate issued on: ${issueDate}`,
+        0,
+        450,
+        {
+          align: "center",
+          width: pageWidth,
+        }
+      );
 
-    // ================= Signature =================
+    // =================================================
+    // Signature
+    // =================================================
 
     doc
       .moveTo(100, 500)
@@ -898,16 +703,25 @@ export const downloadCertificate = async (req, res) => {
         width: 170,
       });
 
-    // ================= Certificate Number =================
+    // =================================================
+    // Certificate Number
+    // =================================================
 
     doc
       .fontSize(11)
-      .text(`Certificate No: ${certificateNumber}`, pageWidth - 300, 500, {
-        align: "center",
-        width: 200,
-      });
+      .text(
+        `Certificate No: ${certificateNumber}`,
+        pageWidth - 300,
+        500,
+        {
+          align: "center",
+          width: 200,
+        }
+      );
 
-    // ================= Footer =================
+    // =================================================
+    // Footer
+    // =================================================
 
     doc
       .fontSize(9)
@@ -919,16 +733,15 @@ export const downloadCertificate = async (req, res) => {
         {
           align: "center",
           width: pageWidth,
-        },
+        }
       );
 
-    // ================= Finish PDF =================
-
+    // Finish PDF
     doc.end();
   } catch (error) {
-    console.error(error);
+    console.error("Certificate Download Error:", error);
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: error.message,
     });

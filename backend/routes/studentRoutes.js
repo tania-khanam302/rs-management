@@ -3,6 +3,7 @@ import express from "express";
 import {
     registerStudent,
     loginStudent,
+    logoutStudent,
     getStudentProfile,
     updateStudentProfile,
     completeCourse,
@@ -19,6 +20,9 @@ router.post("/register", registerStudent);
 
 // Login
 router.post("/login", loginStudent);
+
+// logout
+router.post("/logout", logoutStudent);
 
 // Protected Profile
 router.get(

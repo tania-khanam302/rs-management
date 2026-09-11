@@ -46,7 +46,7 @@ function PersonalInfo() {
       setError("");
 
       const response = await axios.get(
-        "http://localhost:4000/api/students/profile",
+        "https://rs-management-vgcw.onrender.com/api/students/profile",
         {
           withCredentials: true,
         }
@@ -177,7 +177,7 @@ function PersonalInfo() {
     setError("");
 
     const response = await axios.put(
-      "http://localhost:4000/api/students/profile",
+      "https://rs-management-vgcw.onrender.com/api/students/profile",
       form,
       {
         withCredentials: true,
@@ -260,7 +260,7 @@ function PersonalInfo() {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:4000/api/students/logout",
+        "https://rs-management-vgcw.onrender.com/api/students/logout",
         {},
         {
           withCredentials: true,
