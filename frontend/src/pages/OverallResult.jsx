@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import "./../OverallResult.css";
 import headerLogo from "../images/header-logo.png";
 
 function ResultSearch() {
+  const navigate = useNavigate();
+
+const API_URL = "https://rs-management-vgcw.onrender.com";
+
   const [student, setStudent] = useState(null);
   const [results, setResults] = useState([]);
   const [cgpa, setCgpa] = useState(null);
@@ -20,7 +25,7 @@ function ResultSearch() {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:4000/api/students/logout",
+        `${API_URL}/api/students/logout`,
         {},
         {
           withCredentials: true,
@@ -41,7 +46,7 @@ function ResultSearch() {
 
       // ================= Get Logged-in Student Profile =================
       const studentResponse = await axios.get(
-        "http://localhost:4000/api/students/profile",
+        `${API_URL}/api/students/profile`,
         {
           withCredentials: true,
         },
@@ -53,7 +58,7 @@ function ResultSearch() {
 
       // ================= Get All Results =================
       const resultResponse = await axios.get(
-        "http://localhost:4000/api/students/profile",
+        `${API_URL}/api/results/my-results`,
         {
           withCredentials: true,
         },
@@ -64,8 +69,8 @@ function ResultSearch() {
       setResults(resultResponse.data.results || []);
 
       // ================= Get CGPA =================
-      const cgpaResponse = await axios.get(
-        "https://rs-management-vgcw.onrender.com/api/students/certificate/download",
+    const cgpaResponse = await axios.get(
+  `${API_URL}/api/results/cgpa`,
         {
           withCredentials: true,
         },
@@ -430,7 +435,7 @@ function ResultSearch() {
   const downloadCertificate = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/students/certificate/download",
+        `${API_URL}/api/students/certificate/download`,
         {
           withCredentials: true,
 
