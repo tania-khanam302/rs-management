@@ -10,17 +10,26 @@ const app = express();
 
 // ================= CORS =================
 
+// app.use(
+//     cors({
+//         origin: [
+//             "http://localhost:5174",
+//             "https://vercel.app"
+//         ],
+//         credentials: true,
+//     })
+// );
+
+
 app.use(
     cors({
         origin: [
             "http://localhost:5174",
-            "https://vercel.app"
+            "https://rs-management-tau.vercel.app"
         ],
         credentials: true,
     })
 );
-
-
 
 // ================= Middleware =================
 
