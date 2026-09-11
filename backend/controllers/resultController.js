@@ -145,6 +145,72 @@ export const getMyResults = async (req, res) => {
 };
 
 // ================= Get My CGPA =================
+// export const getMyCGPA = async (req, res) => {
+//   try {
+//     const results = await Result.find({
+//       studentId: req.student.studentId,
+//     }).sort({ semester: 1 });
+
+//     if (results.length === 0) {
+//       return res.status(404).json({
+//         success: false,
+//         message: "No result found",
+//       });
+//     }
+
+//     // let totalCredit = 0;
+//     // let totalGradePoint = 0;
+
+//     // results.forEach((result) => {
+//     //   result.subjects.forEach((subject) => {
+//     //     totalCredit += subject.credit;
+
+//     //     totalGradePoint += subject.credit * subject.gradePoint;
+//     //   });
+//     // });
+
+//     // const cgpa = totalGradePoint / totalCredit;
+
+//     // res.status(200).json({
+//     //   success: true,
+//     //   studentId: req.student.studentId,
+//     //   totalSemester: results.length,
+//     //   totalCredit,
+//     //   cgpa: Number(cgpa.toFixed(3)),
+//     // });
+    
+
+//     let totalCredit = 0;
+// let totalGradePoint = 0;
+
+// results.forEach((result) => {
+//   result.subjects.forEach((subject) => {
+//     totalCredit += Number(subject.credit);
+//     totalGradePoint += Number(subject.credit) * Number(subject.gradePoint);
+//   });
+// });
+
+// const cgpa = totalGradePoint / totalCredit;
+
+// res.status(200).json({
+//   success: true,
+//   studentId,
+//   totalSemester: results.length,
+//   totalCredit,
+//   totalGradePoint,
+//   cgpa: Number(cgpa.toFixed(3)),
+// });
+
+//   } catch (error) {
+//     res.status(500).json({
+//       success: false,
+//       message: error.message,
+//     });
+//   }
+// };
+
+
+// ================= Get My CGPA =================
 export const getMyCGPA = async (req, res) => {
   try {
     const results = await Result.find({
@@ -158,49 +224,27 @@ export const getMyCGPA = async (req, res) => {
       });
     }
 
-    // let totalCredit = 0;
-    // let totalGradePoint = 0;
-
-    // results.forEach((result) => {
-    //   result.subjects.forEach((subject) => {
-    //     totalCredit += subject.credit;
-
-    //     totalGradePoint += subject.credit * subject.gradePoint;
-    //   });
-    // });
-
-    // const cgpa = totalGradePoint / totalCredit;
-
-    // res.status(200).json({
-    //   success: true,
-    //   studentId: req.student.studentId,
-    //   totalSemester: results.length,
-    //   totalCredit,
-    //   cgpa: Number(cgpa.toFixed(3)),
-    // });
-    
-
     let totalCredit = 0;
-let totalGradePoint = 0;
+    let totalGradePoint = 0;
 
-results.forEach((result) => {
-  result.subjects.forEach((subject) => {
-    totalCredit += Number(subject.credit);
-    totalGradePoint += Number(subject.credit) * Number(subject.gradePoint);
-  });
-});
+    results.forEach((result) => {
+      result.subjects.forEach((subject) => {
+        totalCredit += Number(subject.credit);
+        totalGradePoint +=
+          Number(subject.credit) * Number(subject.gradePoint);
+      });
+    });
 
-const cgpa = totalGradePoint / totalCredit;
+    const cgpa = totalGradePoint / totalCredit;
 
-res.status(200).json({
-  success: true,
-  studentId,
-  totalSemester: results.length,
-  totalCredit,
-  totalGradePoint,
-  cgpa: Number(cgpa.toFixed(3)),
-});
-
+    res.status(200).json({
+      success: true,
+      studentId: req.student.studentId,
+      totalSemester: results.length,
+      totalCredit,
+      totalGradePoint,
+      cgpa: Number(cgpa.toFixed(3)),
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
